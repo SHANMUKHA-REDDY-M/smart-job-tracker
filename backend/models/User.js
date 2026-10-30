@@ -8,6 +8,12 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    role: {
+      type: String,
+      enum: ['seeker', 'company'],
+      default: 'seeker',
+      index: true
+    },
     email: {
       type: String,
       required: true,
@@ -19,6 +25,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: 6
+    },
+    resumeText: {
+      type: String,
+      trim: true,
+      maxlength: 30000,
+      default: ''
     }
   },
   { timestamps: true }
@@ -35,4 +47,3 @@ userSchema.methods.comparePassword = function comparePassword(password) {
 };
 
 export default mongoose.model('User', userSchema);
-

@@ -7,7 +7,8 @@ export default function Register() {
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    role: 'seeker'
   });
   const [isMember, setIsMember] = useState(true);
   const [error, setError] = useState('');
@@ -29,6 +30,11 @@ export default function Register() {
 
   function toggleMember() {
     setIsMember((currentValue) => !currentValue);
+    setError('');
+  }
+
+  function selectRole(role) {
+    setFormValues((currentValues) => ({ ...currentValues, role }));
     setError('');
   }
 
@@ -59,12 +65,41 @@ export default function Register() {
   }
 
   return (
-    <section className="auth-card">
-      <h1>{isMember ? 'Welcome back' : 'Create your account'}</h1>
+    <section className={`auth-card auth-${formValues.role}`}>
+      <div className="auth-intro">
+        <span className="auth-eyebrow">SMART JOB TRACKER</span>
+        <h1>{isMember
+          ? formValues.role === 'company' ? 'Welcome back, hiring team' : 'Welcome back'
+          : formValues.role === 'company' ? 'Build your hiring pipeline' : 'Plan your next move'}
+        </h1>
+        <p>
+          {formValues.role === 'company'
+            ? 'Find great candidates and keep every hiring step organized.'
+            : 'Keep your applications organized and move confidently through your job search.'}
+        </p>
+      </div>
+      <div className="role-switcher" aria-label="Account type">
+        <button
+          className={formValues.role === 'seeker' ? 'role-option active' : 'role-option'}
+          type="button"
+          onClick={() => selectRole('seeker')}
+        >
+          <strong>Job seeker</strong>
+          <span>Track applications</span>
+        </button>
+        <button
+          className={formValues.role === 'company' ? 'role-option active' : 'role-option'}
+          type="button"
+          onClick={() => selectRole('company')}
+        >
+          <strong>Company</strong>
+          <span>Manage hiring</span>
+        </button>
+      </div>
       <form onSubmit={handleSubmit}>
         {!isMember && (
           <FormRow
-            label="Name"
+            label={formValues.role === 'company' ? 'Company name' : 'Full name'}
             name="name"
             value={formValues.name}
             onChange={handleChange}

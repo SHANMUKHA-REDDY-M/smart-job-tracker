@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Dashboard from './pages/Dashboard.jsx';
+import Discover from './pages/Discover.jsx';
 import Register from './pages/Register.jsx';
 import ProtectedRoute from './pages/ProtectedRoute.jsx';
 
@@ -16,6 +17,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/discover"
+            element={
+              <ProtectedRoute>
+                <Discover />
               </ProtectedRoute>
             }
           />

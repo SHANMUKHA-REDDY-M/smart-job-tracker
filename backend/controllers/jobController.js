@@ -20,9 +20,23 @@ export async function createJob(req, res, next) {
 
 export async function updateJob(req, res, next) {
   try {
+    const editableFields = [
+      'company',
+      'position',
+      'status',
+      'location',
+      'jobUrl',
+      'notes',
+      'appliedAt'
+    ];
+    const updates = Object.fromEntries(
+      editableFields
+        .filter((field) => Object.hasOwn(req.body, field))
+        .map((field) => [field, req.body[field]])
+    );
     const job = await Job.findOneAndUpdate(
       { _id: req.params.id, createdBy: req.user.id },
-      req.body,
+      updates,
       { new: true, runValidators: true }
     );
 

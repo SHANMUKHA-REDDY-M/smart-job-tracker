@@ -6,18 +6,21 @@ export default function Navbar() {
 
   function logout() {
     localStorage.removeItem('token');
-    navigate('/login');
+    localStorage.removeItem('user');
+    navigate('/register');
   }
 
   return (
     <nav className="navbar">
       <Link to="/" className="brand">Smart Job Tracker</Link>
       {isLoggedIn ? (
-        <button onClick={logout}>Log out</button>
+        <div className="nav-actions">
+          <Link to="/discover">Discover jobs</Link>
+          <button onClick={logout}>Log out</button>
+        </div>
       ) : (
-        <Link to="/login">Log in</Link>
+        <Link to="/register">Log in</Link>
       )}
     </nav>
   );
 }
-
