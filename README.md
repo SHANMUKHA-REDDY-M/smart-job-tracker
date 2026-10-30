@@ -8,6 +8,10 @@ Visit the deployed application:
 
 **[Smart Job Tracker](https://smart-job-tracker.vercel.app/)**
 
+Alternate deployment:
+
+**[Smart Job Tracker — MSR1](https://smart-job-tracker-msr1.vercel.app/register)**
+
 The production frontend is hosted on Vercel and uses the deployed Express API on Render.
 
 ## Features
