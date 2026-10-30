@@ -63,7 +63,8 @@ by macOS system services. The frontend defaults to:
 http://localhost:5001/api
 ```
 
-Set `VITE_API_URL` in `frontend/.env` to override it.
+Set `VITE_API_URL` in `frontend/.env` to override it. The deployed frontend uses
+the current Render API at `https://smart-job-tracker-api-d4ph.onrender.com/api`.
 
 ## Environment variables
 

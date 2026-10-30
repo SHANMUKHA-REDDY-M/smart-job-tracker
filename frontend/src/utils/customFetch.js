@@ -1,7 +1,12 @@
 import axios from 'axios';
 
+const configuredApiUrl = import.meta.env.VITE_API_URL;
+const apiBaseUrl = configuredApiUrl?.includes('smart-job-tracker-kth8.onrender.com')
+  ? 'https://smart-job-tracker-api-d4ph.onrender.com/api'
+  : configuredApiUrl || 'http://localhost:5001/api';
+
 const customFetch = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5001/api'
+  baseURL: apiBaseUrl
 });
 
 customFetch.interceptors.request.use((config) => {
