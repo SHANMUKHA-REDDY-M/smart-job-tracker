@@ -21,6 +21,7 @@ const configuredOrigins = (process.env.CLIENT_URL || '')
 const allowedOrigins = new Set([
   ...configuredOrigins,
   'https://smart-job-tracker.vercel.app',
+  'https://smart-job-tracker-msr1.vercel.app',
   'http://localhost:5173',
   'http://127.0.0.1:5173'
 ]);

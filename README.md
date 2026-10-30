@@ -86,7 +86,7 @@ PORT=5001
 For Render, set `CLIENT_URL` to:
 
 ```env
-CLIENT_URL=https://smart-job-tracker.vercel.app
+CLIENT_URL=https://smart-job-tracker.vercel.app,https://smart-job-tracker-msr1.vercel.app
 ```
 
 Optional integrations:
