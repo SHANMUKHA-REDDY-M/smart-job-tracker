@@ -79,6 +79,12 @@ CLIENT_URL=http://localhost:5173
 PORT=5001
 ```
 
+For Render, set `CLIENT_URL` to:
+
+```env
+CLIENT_URL=https://smart-job-tracker.vercel.app
+```
+
 Optional integrations:
 
 ```env
